@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ferrari Car Rental - Rent a Ferrari</title>
+    <style type="text/css">
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('Images/logo.png'); 
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            display: flex;
+            align-items:center ;
+            justify-content: center;
+            min-height: 70vh;
+        }
+
+        .form-container {
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            padding: 10px 20px 0px 20px;
+            border-radius: 8px;
+            max-width: 400px;
+            width: 100%;
+            height: 550px;
+        }
+
+        .form-container h2 {
+            text-align: center;
+            margin-top: 2px;
+        }
+
+        .form-group {
+            margin-top: 8px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+.date{
+display: flex;
+}
+.form-group input[type="number"]{
+ width: 40%;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 12px;
+
+}
+        .form-group input[type="text"],
+        .form-group input[type="date"],
+        .form-group input[type="number"],
+        .form-group input[type="email"] {
+            width: 97%;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 12px;
+        }
+
+.form-group input[type="date"]{
+
+             width: 40%;
+            
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 12px;
+}
+
+        .form-group textarea {
+            width: 97%;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+
+        }
+
+        .form-group button {
+            background-color: #333;
+
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+.form-group-form-button-container {
+    text-align: center;
+            display: flex;
+            justify-content: center; 
+        }
+
+.form-group button{
+background-color: #d40219;
+
+}
+        .form-group button:hover {
+            background-color: #444;
+        }
+    </style>
+
+    <script type="text/javascript">
+          function msg() {
+            alert("Thank you for submitting the form!");
+        }
+    </script>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Rent a Ferrari</h2>
+        <form action="header.html" method="post"  onsubmit="msg()">
+
+
+            <div class="form-group">
+                <label for="name">Full Name:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+
+                 <div class="form-group">
+        <label for="car-model">Car Model:</label>
+        <input type="text" id="car-model" name="car-model" required>
+      </div>
+
+
+        <script>
+            // Function to retrieve and display the car name from the query parameter
+            function displayCarName() {
+                const queryString = window.location.search;
+                const urlParams = new URLSearchParams(queryString);
+                const carName = urlParams.get('car');
+                console.log(carName);
+                // Display the car name in the input field
+                const carNameInput = document.getElementById('car-model');
+                carNameInput.value = carName || 'No car selected'; // If car name is not provided, display 'No car selected'
+            }
+
+            // Call the displayCarName() function when the page loads
+            displayCarName();
+        </script>
+
+
+      <div class="form-group"> 
+        <label for="drop-date">Pickup Date:</label>
+        <input type="date" id="drop-date" name="drop-date" required>
+      </div>
+
+      <div class="form-group">
+        <label for="rental-days">Rental Days:</label>
+        <input type="number" id="rental-days" name="rental-days" min="1" required>
+      </div>
+      
+
+
+
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="contact-number">Contact Details:</label>
+                <input type="number" id="contact-number" name="contact-number" required>
+            </div>
+            <div class="form-group">
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" rows="4" required></textarea>
+            </div>
+            <div class="form-group">
+            <div class="form-group-form-button-container">
+                <button type="submit">Submit</button>
+            </div></div>
+        </form>
+    </div>
+</body>
+</html>

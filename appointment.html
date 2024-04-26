@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ferrari Car Rental - Rent a Ferrari</title>
+    <style type="text/css">
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('Images/logo.png'); 
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            display: flex;
+            align-items:center ;
+            justify-content: center;
+            min-height: 70vh;
+        }
+
+        .form-container {
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            padding: 10px 20px 0px 20px;
+            border-radius: 8px;
+            max-width: 400px;
+            width: 100%;
+            height: 550px;
+        }
+
+        .form-container h2 {
+            text-align: center;
+            margin: 10px;
+        }
+
+    label {
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    input[type="text"],
+     input[type="number"],
+    input[type="email"],
+    input[type="date"] {
+      width: 95%;
+      padding: 8px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    input[type="submit"] {
+     background-color: #d40219;
+    position: relative;
+    left: 30%;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+/*            margin-top: 30px;*/
+    }
+
+    input[type="submit"]:hover {
+       background-color: #444;
+    }
+
+    .appointment-container {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+     .thank-you-message {
+      display: none;
+      margin-top: 20px;
+      font-size: 18px;
+      color: green;}
+
+
+    </style>
+
+    <script type="text/javascript">
+          function msg() {
+            alert("Thank you for submitting the form!");
+        }
+    </script>
+</head>
+<body>
+    <div class="form-container">
+         <div class="appointment-container">
+    <h2>Book an Appointment</h2>
+    <form id="appointmentForm" onsubmit="submitAppointment(event)">
+
+
+
+      <label for="name">Name:</label>
+      <input type="text" id="name" required>
+
+
+       <label for="carname">Preffered Car Model:</label>
+      <input type="text" id="car-model" required>
+
+       <label for="cnumber">Contact Number:</label>
+      <input type="number" id="cnumber" required>
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" required>
+
+      <label for="date">Preferred Date:</label>
+      <input type="date" id="date" required>
+
+            <input type="submit" value="Book Appointment">
+    </form>
+
+    <div class="thank-you-message" id="thankYouMessage">
+      Thank you for booking an appointment!
+    </div>
+  </div>
+</div>
+
+   <script>
+    function submitAppointment(event) {
+      event.preventDefault();
+
+     
+      const appointmentForm = document.getElementById('appointmentForm');
+      appointmentForm.style.display = 'none';
+
+      const thankYouMessage = document.getElementById('thankYouMessage');
+      thankYouMessage.style.display = 'block';
+
+      
+      setTimeout(function () {
+        window.location.href = 'header.html';
+      }, 500);
+    }
+  </script>
+</body>
+</html>

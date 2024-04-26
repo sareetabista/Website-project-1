@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Ferrari Rentals</title>
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@600&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/cdef59c4b2.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/style1.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/list.css">
+    <style>
+      
+
+        body {
+            font-family: 'Mulish', sans-serif;
+            margin: 0;
+            padding: 0;
+/*            background-color: #f8f9fa;*/
+        }
+
+        #cart-container {
+            position: relative;
+            bottom: 80px;
+             background-color: #f8f9fa;
+           display: flex;
+            justify-content: center;
+            /* align-items: center; */
+             flex-direction: column;
+            max-width: 500px;
+            margin: 20px 200px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            overflow: hidden;
+            
+        }
+
+        #car-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px 8px 0 0;
+        }
+
+        #cart-items {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .cart-item img {
+            max-width: 200px;
+            height: auto;
+            border-radius: 4px;
+            margin-right: 10px;
+        }
+        .text{
+
+        }
+
+        .cart-item div {
+            flex: 1;
+            text-align: left;
+        }
+
+        #total-price, .pay-btn{
+            position: relative;
+            left: 80%;
+            top: 90px;
+            background-color: white;
+            font-size: 18px;
+            font-weight: bold;
+            
+        }
+
+        .decrease-btn,.increase-btn{
+            background-color: darkred;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            padding: 2px 10px;
+        }
+
+        .remove-btn,.pay-btn{
+            background-color: darkred;
+            color: #fff;
+            border: none;
+            padding: 10px 10px;
+            cursor: pointer;
+            border-radius: 4px;
+            font-size: 12px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+<nav class="topline">
+    <a href="https://www.facebook.com/">Welcome To Our Facebook Page</a>
+    <ul>
+        <li><span id="usernameDisplay" onclick="logout()"></span></li>
+        <li><a href="login.html" onclick="login()"><i class="fas fa-user"></i></a></li>
+        <li><a href="cart.html"><i class="fas fa-shopping-cart"></i></a></li>
+        <li><a href="header.html" onclick="logout()"><i class="fas fa-sign-out-alt"></i></a></li>
+    </ul>
+</nav>
+
+    <div class="nav">
+
+         <div id="logo">
+                <a href="header.html"><img src="Images/logo.jpeg" alt=""></a>
+            </div>
+
+        <a href="header.html" class="name">Ferrari <span style="color:black; text-decoration: none;"> Rentals</span></a>
+        <span class="social">
+      <span class="follow"> Social Media</span>
+<ul>
+<li> <a href="https://www.facebook.com"><i class="fab fa-facebook"></i></a></li>
+<li> <a href="https://www.instagram.com"><i class="fab fa-instagram"></i></a></li>
+<li> <a href="https://www.twitter.com"><i class="fab fa-twitter"></i></a></li>
+<li> <a href="https://www.pinterest.com/"><i class="fab fa-pinterest-p"></i></a></li>
+
+</span>
+
+</div>
+
+    <div class="optionbar">
+        <ul>
+            <li> <a href="list1.html"> Products</a></li>
+            
+            <li>  <a href="blog.html"> Blogs</a></li>
+            <li>  <a href="privacy_and_policy.html"> Privacy and Policy</li>
+            <li>  <a href="terms and condition.html">  Terms and Condition</li>
+            <li>  <a href="faq.html"> FAQs</a></li>
+            <li>  <a href="review.html"> Review</li>
+            <li>  <a href="about us.html"> About us</a></li>
+        </ul>
+    </div>
+    <!-- <span style="text-decoration: underline;" id="usernameDisplay"></span> -->
+
+<script type="text/javascript">
+
+     const currentUsername = localStorage.getItem('currentUsername');
+    console.log(currentUsername);
+
+    if (currentUsername !== null) {
+        const usernameDisplay = document.getElementById('usernameDisplay');
+        if (usernameDisplay) {
+            usernameDisplay.textContent = `${currentUsername}`;
+        }
+    } else {
+         alert('You have to login first!!');
+          window.location.href = 'login.html';
+    }
+
+function login() {
+        var result = confirm("Do you want to proceed?");
+        
+        if (result) {
+           
+            window.location.href = 'login.html';
+        } else {
+          
+            window.location.href = 'header.html';
+        }
+    }
+    function logout() {
+        localStorage.removeItem('currentUsername');
+        alert('Do you want to logout??'); 
+        window.location.href = 'header.html';
+    }
+
+
+</script>
+
+    <span style="font-size: 35px;padding-left: 45%; color: darkred; text-decoration: underline;"> Your Cart</span>
+   
+       <p id="total-price"></p>
+        <button class="pay-btn" onclick="pay()">Pay Now</button>
+        <div id="cart-container">
+        <div id="cart-items">
+            
+        </div>
+     </div>
+        
+   
+
+    <script>
+       
+        const cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+ 
+        const cartItemsElement = document.getElementById('cart-items');
+        const totalPriceElement = document.getElementById('total-price');
+        let totalPrice = 0;
+
+        cart.forEach(item => {
+            const itemElement = document.createElement('div');
+            itemElement.className = 'cart-item';
+
+            // Display item details
+            itemElement.innerHTML = `
+                <img class="car-image" src="${decodeURIComponent(item.image)}" alt="${item.name}">
+                <div>
+                    <p class="text">${item.name}</p>
+                    <p class="text">Price: $${item.price}</p>
+                    <div>
+                        <button class="decrease-btn" onclick="updateQuantity('${item.name}', -1)">-</button>
+                        <span>${item.quantity}</span>
+                        <button class="increase-btn" onclick="updateQuantity('${item.name}', 1)">+</button>
+                    </div>
+                </div>
+                <button class="remove-btn" onclick="removeFromCart('${item.name}')">Remove</button>
+            `;
+
+            // Add item to the cart
+            cartItemsElement.appendChild(itemElement);
+console.log(item.price);
+console.log(item.quantity);
+console.log(totalPrice);
+            // Update total price
+            totalPrice += parseFloat(item.price) * item.quantity;
+            console.log(totalPrice);
+        });
+
+        // Display the total price
+        totalPriceElement.textContent = `Total Price: $${totalPrice.toFixed(2)}`;
+
+        // Function to update the quantity of an item in the cart
+        function updateQuantity(itemName, change) {
+            const updatedCart = cart.map(item => {
+                if (item.name === itemName) {
+                    item.quantity = Math.max(1, item.quantity + change);
+                }
+                return item;
+            });
+
+            localStorage.setItem('cart', JSON.stringify(updatedCart));
+            // Refresh the page to reflect the changes
+            location.reload();
+        }
+
+        // Function to remove an item from the cart
+        function removeFromCart(itemName) {
+            const updatedCart = cart.filter(item => item.name !== itemName);
+            localStorage.setItem('cart', JSON.stringify(updatedCart));
+            // Refresh the page to reflect the changes
+            location.reload();
+        }
+
+        // Function to handle the payment process
+        function pay() {
+            // Perform payment processing logic here
+            // For educational purposes, let's just clear the cart
+            localStorage.removeItem('cart');
+            alert('Payment successful! Your cart is now empty.');
+            // Redirect to the home page
+            window.location.href = 'header.html';
+        }
+    </script>
+    <footer>
+        <div class="container" style="margin-top: 60px;">
+            <div class="detail">
+                <div class="row">
+                    <div class="col-md-4">
+                        <h4>Contact Us</h4>
+                        <p>123 Car Rental Street<br>
+                            Cityville, State 12345<br>
+                            Phone: (555) 123-4567<br>
+                            Email: info@carrental.com</p>
+                    </div>
+                    <div class="col-md-4">
+                        <h4>Follow Us</h4>
+                        <p>Stay connected on social media:</p>
+                        <ul class="social-icons">
+                            <li><a href="#" target="_blank"><i class="fab fa-facebook"></i></a></li>
+                            <li><a href="#" target="_blank"><i class="fab fa-twitter"></i></a></li>
+                            <li><a href="#" target="_blank"><i class="fab fa-instagram"></i></a></li>
+                            <li> <a href="https://www.pinterest.com/"><i class="fab fa-pinterest-p"></i></a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4">
+                        <h4>Quick Links</h4>
+                        <ul class="footer-links">
+                            <li><a href="header.html">Home</a></li>
+                            <li><a href="list1.html">Products</a></li>
+                            <li><a href="about us.html">About Us</a></li>
+                            <li><a href="contact.html">Contact Us</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="bottom-bar">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <p>&copy; 2023 Car Rental. All rights reserved.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+   <!--  <script>
+         // Retrieve cart items from local storage
+        const cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+        // Display cart items in the HTML
+        const cartItemsElement = document.getElementById('cart-items');
+        const totalPriceElement = document.getElementById('total-price');
+
+        // Calculate and display the total price
+        let totalPrice = 0;
+
+        cart.forEach(item => {
+            const itemElement = document.createElement('div');
+            itemElement.className = 'cart-item';
+
+            // Display item details
+            itemElement.innerHTML = `
+                <img src="${decodeURIComponent(item.image)}" alt="${item.name}">
+                <div>
+                    <p>${item.name}</p>
+                    <p>Price: $${item.price}</p>
+                    <div>
+                        <button onclick="updateQuantity('${item.name}', -1)">-</button>
+                        <span>${item.quantity}</span>
+                        <button onclick="updateQuantity('${item.name}', 1)">+</button>
+                    </div>
+                </div>
+                <button onclick="removeFromCart('${item.name}')">Remove</button>
+            `;
+
+            // Add item to the cart
+            cartItemsElement.appendChild(itemElement);
+
+            // Update total price
+            totalPrice += parseFloat(item.price) * item.quantity;
+        });
+
+        // Display the total price
+        totalPriceElement.textContent = `Total Price: $${totalPrice.toFixed(2)}`;
+
+        // Function to update the quantity of an item in the cart
+        function updateQuantity(itemName, change) {
+            const updatedCart = cart.map(item => {
+                if (item.name === itemName) {
+                    item.quantity = Math.max(1, item.quantity + change);
+                }
+                return item;
+            });
+
+            localStorage.setItem('cart', JSON.stringify(updatedCart));
+            // Refresh the page to reflect the changes
+            location.reload();
+        }
+
+        // Function to remove an item from the cart
+        function removeFromCart(itemName) {
+            const updatedCart = cart.filter(item => item.name !== itemName);
+            localStorage.setItem('cart', JSON.stringify(updatedCart));
+            // Refresh the page to reflect the changes
+            location.reload();
+        }
+
+        // Function to handle the payment process
+        function pay() {
+            // Perform payment processing logic here
+            // For educational purposes, let's just clear the cart
+            localStorage.removeItem('cart');
+            alert('Payment successful! Your cart is now empty.');
+            // Redirect to the home page
+            window.location.href = 'index.html';
+        }
+    </script> -->
+</body>
+
+</html>

@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Ferrari Rentals</title>
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@600&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/cdef59c4b2.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/style1.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/list.css">
+</head>
+
+<body>
+<nav class="topline">
+    <a href="https://www.facebook.com/">Welcome To Our Facebook Page</a>
+    <ul>
+        <li><span id="usernameDisplay" onclick="logout()"></span></li>
+        <li><a href="login.html" onclick="login()"><i class="fas fa-user"></i></a></li>
+        <li><a href="cart.html"><i class="fas fa-shopping-cart"></i></a></li>
+        <li><a href="header.html" onclick="logout()"><i class="fas fa-sign-out-alt"></i></a></li>
+    </ul>
+</nav>
+
+    <div class="nav">
+
+         <div id="logo">
+                <a href="header.html"><img src="Images/logo.jpeg" alt=""></a>
+            </div>
+
+        <a href="header.html" class="name">Ferrari <span style="color:black; text-decoration: none;"> Rentals</span></a>
+        <span class="social">
+      <span class="follow"> Social Media</span>
+<ul>
+<li> <a href="https://www.facebook.com"><i class="fab fa-facebook"></i></a></li>
+<li> <a href="https://www.instagram.com"><i class="fab fa-instagram"></i></a></li>
+<li> <a href="https://www.twitter.com"><i class="fab fa-twitter"></i></a></li>
+<li> <a href="https://www.pinterest.com/"><i class="fab fa-pinterest-p"></i></a></li>
+
+</span>
+
+</div>
+
+    <div class="optionbar">
+        <ul>
+            <li> <a href="list1.html"> Products</a></li>
+            
+            <li>  <a href="blog.html"> Blogs</a></li>
+            <li>  <a href="privacy_and_policy.html"> Privacy and Policy</li>
+            <li>  <a href="terms and condition.html">  Terms and Condition</li>
+            <li>  <a href="faq.html"> FAQs</a></li>
+            <li>  <a href="review.html"> Review</li>
+            <li>  <a href="about us.html"> About us</a></li>
+        </ul>
+    </div>
+    <!-- <span style="text-decoration: underline;" id="usernameDisplay"></span> -->
+
+<script type="text/javascript">
+
+
+     const currentUsername = localStorage.getItem('currentUsername');
+    console.log(currentUsername);
+
+    if (currentUsername !== null) {
+        const usernameDisplay = document.getElementById('usernameDisplay');
+        if (usernameDisplay) {
+            usernameDisplay.textContent = `${currentUsername}`;
+        }
+    } else {
+         usernameDisplay.textContent = '';
+    }
+
+function login() {
+        var result = confirm("Do you want to proceed?");
+        
+        if (result) {
+           
+            window.location.href = 'login.html';
+        } else {
+           
+            window.location.href = 'header.html';
+        }
+    }
+    function logout() {
+        localStorage.removeItem('currentUsername');
+        alert('Do you want to logout??'); 
+        window.location.href = 'header.html';
+    }
+
+
+</script>
+
+        <nav class="next"><a href="list2.html">next page..</a></nav>
+        <main>
+            <section id="productlist">
+                <nav class="dashboard">Explore the list....</nav>
+            </section>
+
+            <div class="car-list">
+                <div class="car-card" data-name="Ferrari Roma" data-price="227,481">
+                    <div class="car">
+                        <img class="car-photo" src="Images/roma3.jpeg" alt="Car 1 - Image 1">
+                        <img class="car-photo" src="Images/roma2.jpeg" alt="Car 1 - Image 2">
+                        <img class="car-photo" src="Images/roma1.jpeg" alt="Car 1 - Image 3">
+                    </div>
+                    <div class="car-details">
+                        <p class="car-name">Ferrari Roma</p>
+                        <p class="car-price">$227,481</p>
+                        <button class="view-details-button"
+                            onclick="viewCarDetails('Ferrari Roma', '227481', 'Images/roma1.jpeg')">View
+                            Details</button>
+                       
+                    </div>
+                </div>
+
+                 <div class="car-card" data-name="Ferrari 296 GTB" data-price="332,986">
+                <div class="car">
+                    <img class="car-photo" src="Images/296 gtb3.jpeg" alt="Car 2 - Image 1">
+                    <img class="car-photo" src="Images/296 gtb2.jpeg" alt="Car 2 - Image 2">
+                    <img class="car-photo" src="Images/296 gtb1.jpeg" alt="Car 2 - Image 3">
+                </div>
+                <div class="car-details">
+                    <p class="car-name">Ferrari 296 GTB</p>
+                    <p class="car-price">$332,986</p>
+                    <button class="view-details-button"
+                        onclick="viewCarDetails('Ferrari 296 GTB', '332986', 'Images/296 gtb1.jpeg')">View Details</button>
+                    
+                </div>
+            </div>
+
+
+            <!-- Car 3 -->
+<div class="car-card" data-name="Ferrari SF90 Stradale" data-price="518,327">
+    <div class="car">
+        <img class="car-photo" src="Images/sf90stradale3.jpeg" alt="Car 3 - Image 1">
+        <img class="car-photo" src="Images/sf90stradale2.jpeg" alt="Car 3 - Image 2">
+        <img class="car-photo" src="Images/sf90stradale1.jpeg" alt="Car 3 - Image 3">
+    </div>
+    <div class="car-details">
+        <p class="car-name">Ferrari SF90 Stradale</p>
+        <p class="car-price">$518,327</p>
+        <button class="view-details-button"
+            onclick="viewCarDetails('Ferrari SF90 Stradale', '518327', 'Images/sf90stradale1.jpeg')">View Details</button>
+        
+    </div>
+</div>
+
+<!-- Car 4 -->
+<div class="car-card" data-name="Ferrari SF90 Spider" data-price="$568,956">
+    <div class="car">
+        <img class="car-photo" src="Images/sf90spider3.jpeg" alt="Car 4 - Image 1">
+        <img class="car-photo" src="Images/sf90spider2.jpeg" alt="Car 4 - Image 2">
+        <img class="car-photo" src="Images/sf90spider1.jpeg" alt="Car 4 - Image 3">
+    </div>
+    <div class="car-details">
+        <p class="car-name">Ferrari SF90 Spider</p>
+        <p class="car-price">$568,956</p>
+        <button class="view-details-button"
+            onclick="viewCarDetails('Ferrari SF90 Spider', '568956', 'Images/sf90spider1.jpeg')">View Details</button>
+        
+    </div>
+</div>
+<!-- Car 5 -->
+<div class="car-card" data-name="Ferrari 296 GTS" data-price="$364,650">
+    <div class="car">
+        <img class="car-photo" src="Images/296 gts3.jpeg" alt="Car 5 - Image 1">
+        <img class="car-photo" src="Images/296 gts2.jpeg" alt="Car 5 - Image 2">
+        <img class="car-photo" src="Images/296 gts1.jpeg" alt="Car 5 - Image 3">
+    </div>
+    <div class="car-details">
+        <p class="car-name">Ferrari 296 GTS</p>
+        <p class="car-price">$364,650</p>
+        <button class="view-details-button"
+            onclick="viewCarDetails('Ferrari 296 GTS', '364650', 'Images/296 gts1.jpeg')">View Details</button>
+        
+    </div>
+</div>
+
+<!-- Car 6 -->
+<div class="car-card" data-name="Laferrari" data-price="3,965,900">
+    <div class="car">
+        <img class="car-photo" src="Images/laferrari3.jpeg" alt="Car 6 - Image 1">
+        <img class="car-photo" src="Images/laferrari2.jpeg" alt="Car 6 - Image 2">
+        <img class="car-photo" src="Images/laferrari1.jpeg" alt="Car 6 - Image 3">
+    </div>
+    <div class="car-details">
+        <p class="car-name">Laferrari</p>
+        <p class="car-price">$3,965,900</p>
+        <button class="view-details-button"
+            onclick="viewCarDetails('Laferrari', '3965900', 'Images/laferrari1.jpeg')">View Details</button>
+        
+    </div>
+</div>
+<!-- Car 7 -->
+<div class="car-card" data-name="Ferrari 812 GTS" data-price="408,203">
+    <div class="car">
+        <img class="car-photo" src="Images/812 gts3.jpeg" alt="Car 7 - Image 1">
+        <img class="car-photo" src="Images/812 gts2.jpeg" alt="Car 7 - Image 2">
+        <img class="car-photo" src="Images/812 gts1.jpeg" alt="Car 7 - Image 3">
+    </div>
+    <div class="car-details">
+        <p class="car-name">Ferrari 812 GTS</p>
+        <p class="car-price">$408,203</p>
+        <button class="view-details-button"
+            onclick="viewCarDetails('Ferrari 812 GTS', '408203', 'Images/812 gts1.jpeg')">View Details</button>
+        
+    </div>
+</div>
+
+<!-- Car 8 -->
+<div class="car-card" data-name="Enzo Ferrari" data-price="3133937">
+    <div class="car">
+        <img class="car-photo" src="Images/enzoferrari3.jpeg" alt="Car 8 - Image 1">
+        <img class="car-photo" src="Images/enzoferrari2.jpeg" alt="Car 8 - Image 2">
+        <img class="car-photo" src="Images/enzoferrari1.jpeg" alt="Car 8 - Image 3">
+    </div>
+    <div class="car-details">
+        <p class="car-name">Enzo Ferrari</p>
+        <p class="car-price">$3,133,937</p>
+        <button class="view-details-button"
+            onclick="viewCarDetails('Enzo Ferrari', '3133937', 'Images/enzoferrari1.jpeg')">View Details</button>
+       
+    </div>
+</div>
+
+        </div>
+        </main>
+
+        <footer style="margin-top:30px;">
+            <div class="container">
+                <div class="detail">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <h4><a href="contact.html" style="color:white;">Contact Us</a></h4>
+                            <p>123 Car Rental Street<br> Cityville, State 12345<br> Phone: (555) 123-4567<br> Email:
+                                info@carrental.com</p>
+                        </div>
+                        <div class="col-md-4">
+                            <h4>Follow Us</h4>
+                            <p>Stay connected on social media:</p>
+                            <ul class="social-icons">
+                                <li><a href="https://www.facebook.com" target="_blank"><i
+                                            class="fab fa-facebook"></i></a></li>
+                                <li><a href="https://www.twitter.com" target="_blank"><i
+                                            class="fab fa-twitter"></i></a></li>
+                                <li><a href="https://www.instagram.com" target="_blank"><i
+                                            class="fab fa-instagram"></i></a></li>
+                                <li> <a href="https://www.pinterest.com/"><i class="fab fa-pinterest-p"></i></a></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-4">
+                            <h4>Quick Links</h4>
+                            <ul class="footer-links">
+                                <li><a href="#">Home</a></li>
+                                <li><a href="list1.html">Products</a></li>
+                                <li><a href="about us.html">About Us</a></li>
+                                <li><a href="contact.html">Contact Us</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="bottom-bar">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <p>&copy; 2023 Car Rental. All rights reserved.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <script>
+            function rotateCarPhotos(carDiv) {
+                const carPhotos = carDiv.querySelectorAll('.car-photo');
+                let index = 0;
+
+                function changePhoto() {
+                    carPhotos.forEach(photo => photo.style.display = 'none');
+                    carPhotos[index].style.display = 'block';
+                    index = (index + 1) % carPhotos.length;
+                }
+
+                let interval;
+                carDiv.addEventListener('mouseenter', () => {
+                    interval = setInterval(changePhoto, 900);
+                });
+
+                carDiv.addEventListener('mouseleave', () => {
+                    clearInterval(interval);
+                    // Reset the index to 0 to show the first image
+                    index = 0;
+                    carPhotos.forEach(photo => photo.style.display = 'none');
+                    carPhotos[0].style.display = 'block';
+                });
+            }
+
+            // function viewCarDetails(carName, carPrice, carImage) {
+            //     const detailsUrl = `details.html?car=${encodeURIComponent(carName)}&price=${encodeURIComponent(carPrice)}&image=${encodeURIComponent(carImage)}`;
+            //     window.location.href = detailsUrl;
+            // }
+           
+    function viewCarDetails(carName, carPrice, carImage) {
+        const detailsUrl = `details.html?car=${encodeURIComponent(carName)}&price=${encodeURIComponent(carPrice)}&image=${encodeURIComponent(carImage)}`;
+        window.location.href = detailsUrl;
+    }
+    // ... (rest of your existing script)
+
+
+
+            function openRentPage(carName) {
+                window.location.href = `form1.html?car=${encodeURIComponent(carName)}`;
+            }
+
+            // Add event listeners to each car to rotate photos on hover
+            const carDivs = document.querySelectorAll('.car');
+
+            carDivs.forEach(carDiv => {
+                rotateCarPhotos(carDiv);
+            });
+
+            const cart = [];
+
+
+
+    function addToCart(carName, carPrice, carImage) {
+        const existingCar = cart.find(item => item.name === carName);
+
+        if (existingCar) {
+            alert('This car is already in your cart!');
+        } else {
+            cart.push({ name: carName, price: carPrice, image: carImage, quantity: 1 });
+            showNotification('Product added to cart! ', 'yourcart.html');
+        }
+    }
+
+
+
+            function showNotification(message, link) {
+                // Display a notification alert with a "View Cart" link
+                const confirmation = confirm(`${message}. Do you want to view your cart?`);
+
+                if (confirmation) {
+                    // Redirect to the cart page
+                    window.location.href = link;
+                }
+            }
+        </script>
+
+</body>
+
+</html>

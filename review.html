@@ -1,0 +1,198 @@
+
+ <!DOCTYPE html>
+<html>
+<head>
+  <title>Ferrari Renting - Review</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-image: url('Images/logo.png'); 
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 70vh;
+    }
+
+    .form-container {
+         
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      padding: 20px;
+      border-radius: 8px;
+      max-width: 400px;
+      width: 100%;
+      height: 550px;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    label {
+      margin-bottom: 30px;
+    }
+  
+    textarea {
+      margin-top: 10px;
+      width: 97%;
+      height: 150px;
+      resize: vertical;
+      padding: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+  input[type="radio"]{
+    margin-top: 8px;
+    margin-bottom: 15px;
+  }
+    .rating-container {
+      display: flex;
+      align-items: center;
+    }
+
+    .rating-input {
+      display: none;
+    }
+
+    .rating-label {
+      position: relative;
+      cursor: pointer;
+      font-size: 24px;
+      color: #ccc;
+      margin-right: 30px;
+    }
+
+    .rating-label::before {
+      content: '\2605'; 
+      position: absolute;
+      font-size: 24px;
+      color: #ccc; 
+    }
+
+    .rating-input:checked ~ .rating-label::before {
+      color: gold;
+    }
+
+    .rating-label:hover::before {
+      color: gold; 
+    }
+
+    input[type="submit"] {
+      background-color: #d40219;
+      color: #fff;
+      border: none;
+      position: relative;
+      left: 40%;
+      margin-top: 10px;
+      padding: 10px 20px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    input[type="text"],
+    input[type="number"],
+    input[type="email"] {
+      margin-top: 8px;
+      margin-bottom: 15px;
+      width: 97%;
+      padding: 5px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 12px;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #444;
+    }
+
+    .review-container {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .thank-you-message {
+      display: none;
+      margin-top: 20px;
+      font-size: 18px;
+      color: green;
+    }
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <div class="review-container">
+      <h2>Leave a Review</h2>
+      <form id="reviewForm" onsubmit="submitReview(event)">
+        <label for="name">Name:</label>
+        <input type="text" id="name" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" required>
+        <label for="rating">Rating:</label><br>
+     <!--  <input type="radio" id="star5" name="rating" value="5" required>
+      <input type="radio" id="star4" name="rating" value="4"><label for="star4">4 stars</label>
+      <input type="radio" id="star3" name="rating" value="3"><label for="star3">3 stars</label>
+      <input type="radio" id="star2" name="rating" value="2"><label for="star2">2 stars</label>
+      <input type="radio" id="star1" name="rating" value="1"><label for="star1">1 star</label>
+<br> -->
+
+<div class="rating-container">
+  <label for="star5">5 star</label>
+    <input type="radio" class="rating-input" id="star5" name="rating" value="5">
+    <label class="rating-label" for="star5"></label>
+
+<label for="star5">4 star</label>
+    <input type="radio" class="rating-input" id="star4" name="rating" value="4">
+    <label class="rating-label" for="star4"></label>
+
+
+<label for="star5">3 star</label>
+    <input type="radio" class="rating-input" id="star3" name="rating" value="3">
+    <label class="rating-label" for="star3"></label>
+
+    <label for="star5">2 star</label>
+    <input type="radio" class="rating-input" id="star2" name="rating" value="2">
+    <label class="rating-label" for="star2"></label>
+
+    <label for="star5">1 star </label>
+    <input type="radio" class="rating-input" id="star1" name="rating" value="1">
+    <label class="rating-label" for="star1"></label>
+  </div>
+              <label for="review">Your Review:</label>
+        <textarea id="review" required></textarea>
+
+        <input type="submit" value="Review">
+      </form>
+
+      <div class="thank-you-message" id="thankYouMessage">
+        Thank you for leaving your review!
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function submitReview(event) {
+      event.preventDefault();
+
+      // You can add code here to handle form submission, e.g., send data to the server via AJAX
+
+      // Show the thank you message and hide the form
+      const reviewForm = document.getElementById('reviewForm');
+      reviewForm.style.display = 'none';
+
+      const thankYouMessage = document.getElementById('thankYouMessage');
+      thankYouMessage.style.display = 'block';
+
+      // Redirect after 2 seconds
+      setTimeout(function () {
+        window.location.href = 'header.html';
+      }, 2000);
+    }
+  </script>
+</body>
+</html>
